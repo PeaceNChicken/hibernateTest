@@ -31,17 +31,16 @@ public class HomeController {
 	@PostMapping("/userInsert")
 	public String userInsert(User user) {
 		userServices.save(user);
-//		return "/user/userList";
-		return "";
+		return "redirect:/userList";
+
 		
 	}
 	
 	@GetMapping("/userList")
 	public String userList(Model model) {
 		List<User> userList = userServices.findAll();
-		System.out.println(userList.toString() + ":::UserServices.java");
+		//System.out.println(userList.toString() + ":::UserServices.java");
 		model.addAttribute("userList", userList);
-		
 		return "/user/userList";
 	}
 }
