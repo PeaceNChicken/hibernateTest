@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	//findAll()도 jpaRepository에 이미 들어가있어서 주석처리해도 에러없다. save()도 마찬가지
 	public List<User> findByUserGender(Character gender);
 	public List<User> findByUserIdx(Long idx);
-	//public List<User> findByUserAgeLessThan(Integer age);
-	public List<User> findByUserAgeLessThanEqual(Integer age);
+	public List<User> findByUserAgeLessThanEqual(Long age);
+	public List<User> findByUserIdxAndUserName(Long idx, String name);
 }

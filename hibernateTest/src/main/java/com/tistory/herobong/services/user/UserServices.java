@@ -13,6 +13,7 @@ public interface UserServices {
 	public List<User> findByUserGender(Character gender);	
 	public List<User> findByUserIdx(Long idx);
 	
-	//public List<User> findByUserAgeLessThan(Integer age);
-	public List<User> findByUserAgeLessThanEqual(Integer age);
+	public List<User> findByUserAgeLessThanEqual(Long age);
+	
+	public List<User> findByUserIdxAndUserName(Long idx, String name);
 }

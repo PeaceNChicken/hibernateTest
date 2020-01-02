@@ -48,11 +48,11 @@ public class UserServicesImpl implements UserServices {
 		return userRepository.findByUserIdx(idx);
 	}
 	
-	/*
-	 * public List<User> findByUserAgeLessThan(Integer age){ return
-	 * userRepository.findByUserAgeLessThan(age); }
-	 */
-	public List<User> findByUserAgeLessThanEqual(Integer age){
+	public List<User> findByUserAgeLessThanEqual(Long age){
 		return userRepository.findByUserAgeLessThanEqual(age);
+	}
+	
+	public List<User> findByUserIdxAndUserName(Long idx, String name){
+		return userRepository.findByUserIdxAndUserName(idx, name);
 	}
 }

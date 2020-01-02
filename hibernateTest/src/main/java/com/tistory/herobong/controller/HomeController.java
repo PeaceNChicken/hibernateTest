@@ -61,12 +61,22 @@ public class HomeController {
 	}
 	
 	@GetMapping("/userSearchAge")
-	public String userSearchAge(Integer age, Model model) {
-		age = 30;
+	public String userSearchAge(Long age, Model model) {
+		age = (long) 30;
 		List<User> userList = userServices.findByUserAgeLessThanEqual(age);	//age값 이하인 user 리스트
 		//List<User> userList = userServices.findByUserAgeLessThan(age);	age값 미만인 user 리스트
 		model.addAttribute("userList", userList);
 		return "/user/userList";
 	}
+	
+	@GetMapping("/userSearchAnd")
+	public String userSearchAnd(Long idx, String name, Model model) {
+		idx = (long) 11;
+		name = "박시연";
+		List<User> userList = userServices.findByUserIdxAndUserName(idx, name);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
+	
 	
 }
