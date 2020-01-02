@@ -1,5 +1,6 @@
 package com.tistory.herobong.repositories.user;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,4 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> findByUserIdxAndUserName(Long idx, String name);
 	public List<User> findByUserGenderOrUserAddress(Character gender, String address);
 	public List<User> findByUserAddressIs(String address);
+	public List<User> findByUserAgeBetween(Long sage, Long eage);
+	public List<User> findByUserAgeGreaterThanEqual(Long age);
+	//public List<User> findByUserNameIsNull(String name);
 }

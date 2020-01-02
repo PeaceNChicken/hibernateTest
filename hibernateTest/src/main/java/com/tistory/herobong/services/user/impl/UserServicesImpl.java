@@ -1,5 +1,6 @@
 package com.tistory.herobong.services.user.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -65,4 +66,17 @@ public class UserServicesImpl implements UserServices {
 	public List<User> findByUserAddressIs(String address){
 		return userRepository.findByUserAddressIs(address);
 	}
+	
+	public List<User> findByUserAgeBetween(Long sage, Long eage){
+		return userRepository.findByUserAgeBetween(sage, eage);
+	}
+	
+	public List<User> findByUserAgeGreaterThanEqual(Long age){
+		return userRepository.findByUserAgeGreaterThanEqual(age);
+	}
+	
+	/*
+	 * public List<User> findByUserNameIsNull(String name){ return
+	 * userRepository.findByUserNameIsNull(name); }
+	 */
 }

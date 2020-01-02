@@ -1,5 +1,8 @@
 package com.tistory.herobong.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -94,4 +97,30 @@ public class HomeController {
 		model.addAttribute("userList", userList);
 		return "/user/userList";
 	}
+	
+	@GetMapping("/userSearchBetween")
+	public String userSearchBetween(Long sage, Long eage, Model model) {
+		sage = (long) 10;
+		eage = (long) 30;
+		List<User> userList = userServices.findByUserAgeBetween(sage, eage);
+		model.addAttribute("userLIst", userList);
+		return "/user/userList";
+	}
+	
+	@GetMapping("/userSearchGreater")
+	public String userSearchGreater(Long age, Model model) {
+		age = (long) 30;
+		//List<User> userList = userServices.findByUserAgeGreaterThan(age);
+		List<User> userList = userServices.findByUserAgeGreaterThanEqual(age);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
+	
+	/*
+	 * @GetMapping("/userSearchIsNull") public String userSearchIsNull(String name,
+	 * Model model) { name = null; List<User> userList =
+	 * userServices.findByUserNameIsNull(name); model.addAttribute("userList",
+	 * userList); return "/user/userList"; }
+	 */
+	
 }

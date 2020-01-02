@@ -1,5 +1,6 @@
 package com.tistory.herobong.services.user;
 
+import java.util.Date;
 import java.util.List;
 
 import com.tistory.herobong.models.user.User;
@@ -20,4 +21,10 @@ public interface UserServices {
 	public List<User> findByUserGenderOrUserAddress(Character gender, String address);
 	
 	public List<User> findByUserAddressIs(String address);
+	
+	public List<User> findByUserAgeBetween(Long sage, Long eage);
+	
+	public List<User> findByUserAgeGreaterThanEqual(Long age);
+	
+	//public List<User> findByUserNameIsNull(String name);
 }
