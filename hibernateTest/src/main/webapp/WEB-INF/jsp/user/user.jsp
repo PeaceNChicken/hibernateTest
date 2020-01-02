@@ -17,14 +17,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script>
-$(function(){	//$(document).ready()
+$(function(){	//	$(document).ready()
 	$('#btn').click(function(){
 		$('form[rel=userInsertForm]').submit();
 	});
+
 })
 
+
 </script>
-<title>Insert title here</title>
+<title>회원가입 폼</title>
 </head>
 <body>
 <div class="container">
@@ -46,11 +48,21 @@ $(function(){	//$(document).ready()
 				<div class="col-2"><label for="">주소:</label></div>
 				<div class="col-10"><input class="form-control" type="text" name="userAddress" /></div>
 			</div>
-			
-				<div class="col-6">
+			<div class="row text-center">
+				<div class="col-2"><label for="">권한:</label></div>
+				<div class="col-2">관리자 <input class="form-control "type="radio" name="role" value="ADMIN" /></div>
+				<div class="col-2">회원 <input class="form-control" type="radio" name="role" value="USER" /></div>
+			</div>
+			<div class="row text-center">
+				<div class="col-2"><label for="">나이:</label></div>
+				<div class="col-10"><input class="form-control" type="text" name="userAge" /></div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-12">
 					<button type="button" id="btn" class="btn btn-primary btn-block">회원정보입력</button>
 				</div>
-			
+			</div>
 		</div>
 
 	</form>
