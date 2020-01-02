@@ -52,7 +52,7 @@ public class User {
 	private String userEmail;
 	
 	@Column(name="user_age", nullable = true, length=3)
-	private Integer userAge;
+	private long userAge;
 	
 	@CreationTimestamp
 	@Column(name="created_at")

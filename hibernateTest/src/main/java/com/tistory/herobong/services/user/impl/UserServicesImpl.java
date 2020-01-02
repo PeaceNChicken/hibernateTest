@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tistory.herobong.models.user.User;
 import com.tistory.herobong.models.user.UserRole;
@@ -13,6 +14,7 @@ import com.tistory.herobong.repositories.user.UserRepository;
 import com.tistory.herobong.repositories.user.UserRoleRepository;
 import com.tistory.herobong.services.user.UserServices;
 
+@Transactional
 @Service("UserServices")
 public class UserServicesImpl implements UserServices {
 
@@ -24,10 +26,10 @@ public class UserServicesImpl implements UserServices {
 	@PostConstruct	//	was시작시 객체 초기화와 함께 의존성 설정하는 어노테이션이라고 한다
 	public void insertUserRoles() {
 		if(userRoleRepository.findByRole("ADMIN") == null) {
-			userRoleRepository.save(new UserRole("ADMIN"));
+			userRoleRepository.save(new UserRole(1, "ADMIN"));
 		}
 		if(userRoleRepository.findByRole("USER") == null) {
-			userRoleRepository.save(new UserRole("USER"));
+			userRoleRepository.save(new UserRole(2, "USER"));
 		}
 	}
 	
@@ -54,5 +56,13 @@ public class UserServicesImpl implements UserServices {
 	
 	public List<User> findByUserIdxAndUserName(Long idx, String name){
 		return userRepository.findByUserIdxAndUserName(idx, name);
+	}
+	
+	public List<User> findByUserGenderOrUserAddress(Character gender, String address){
+		return userRepository.findByUserGenderOrUserAddress(gender, address);
+	}
+	
+	public List<User> findByUserAddressIs(String address){
+		return userRepository.findByUserAddressIs(address);
 	}
 }

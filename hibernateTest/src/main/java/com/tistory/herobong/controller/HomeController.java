@@ -78,5 +78,20 @@ public class HomeController {
 		return "/user/userList";
 	}
 	
+	@GetMapping("/userSearchOr")
+	public String userSearchOr(Character gender, String address, Model model) {
+		gender = 'f';
+		address = "서울";
+		List<User> userList = userServices.findByUserGenderOrUserAddress(gender, address);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
 	
+	@GetMapping("/userSearchIs")	//Is 대신 Equals을 써도 동일
+	public String userSearchIs(String address, Model model) {
+		address = "인천";
+		List<User> userList = userServices.findByUserAddressIs(address);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
 }

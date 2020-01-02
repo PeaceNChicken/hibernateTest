@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> findByUserIdx(Long idx);
 	public List<User> findByUserAgeLessThanEqual(Long age);
 	public List<User> findByUserIdxAndUserName(Long idx, String name);
+	public List<User> findByUserGenderOrUserAddress(Character gender, String address);
+	public List<User> findByUserAddressIs(String address);
 }

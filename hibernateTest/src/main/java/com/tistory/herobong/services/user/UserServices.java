@@ -16,4 +16,8 @@ public interface UserServices {
 	public List<User> findByUserAgeLessThanEqual(Long age);
 	
 	public List<User> findByUserIdxAndUserName(Long idx, String name);
+	
+	public List<User> findByUserGenderOrUserAddress(Character gender, String address);
+	
+	public List<User> findByUserAddressIs(String address);
 }
