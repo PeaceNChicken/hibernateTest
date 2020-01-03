@@ -100,7 +100,7 @@ public class HomeController {
 	
 	@GetMapping("/userSearchBetween")
 	public String userSearchBetween(Model model) throws ParseException {
-		String startAt = "2019-12-10";
+		String startAt = "2019-12-10";	// 시,분,초 00:00:00이 기본
 		String endAt = "2019-12-20";
 		Date sAt = new SimpleDateFormat("yyyy-MM-dd").parse(startAt);
 		Date eAt = new SimpleDateFormat("yyyy-MM-dd").parse(endAt);
@@ -127,10 +127,31 @@ public class HomeController {
 	 
 	@GetMapping("userSearchAfter")
 	public String userSearchAfter(Model model) throws ParseException {
-		String startAt = "2019-12-15";
-		Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse(startAt);
+		String startAt = "2019-12-15 10:00:00";
+		Date startDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startAt);
 		List<User> userList = userServices.findByCreatedAtAfter(startDate);
 		model.addAttribute("userList", userList);
 		return "/user/userList";
 	}
+	
+	@GetMapping("/userSearchLike")
+	public String userSearchLike(Model model) {
+		String name = "%한%";
+		//	김%- 김으로 시작하는 이름, %김%- 김이 들어가는 이름, %김- 김으로 끝나는 이름 , %- 글자수 정해지지 않음 '_'- 글자수 정해줌
+		//List<User> userList = userServices.findByUserNameNotLike(name); 해당글자 제외한 결과값
+		List<User> userList = userServices.findByUserNameLike(name);
+		//System.out.println(userList + " :::");
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
+	
+	@GetMapping("/userSearchOrder")
+	public String userSearchOrder(Model model) {
+		Long age = (long) 30;
+		List<User> userList = userServices.findByUserAgeOrderByUserNameDesc(age);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
+	
+	
 }

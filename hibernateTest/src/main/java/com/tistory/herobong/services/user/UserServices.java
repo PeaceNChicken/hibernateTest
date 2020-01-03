@@ -29,4 +29,9 @@ public interface UserServices {
 	public List<User> findByUserNameIsNotNull();
 	
 	public List<User> findByCreatedAtAfter(Date startDate);
+	
+	public List<User> findByUserNameLike(String name);
+
+	public List<User> findByUserAgeOrderByUserNameDesc(Long age);
+
 }

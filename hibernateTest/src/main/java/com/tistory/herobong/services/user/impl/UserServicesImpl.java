@@ -24,13 +24,13 @@ public class UserServicesImpl implements UserServices {
 	@Autowired 
 	UserRoleRepository userRoleRepository;
 	
-	@PostConstruct	//	was시작시 객체 초기화와 함께 의존성 설정하는 어노테이션이라고 한다
+	@PostConstruct	//	was시작시 객체 초기화와 함께 의존성 설정하는 어노테이션이라고 한다. role 에 auto increase가 설정안되서 0으로 시작됐던것
 	public void insertUserRoles() {
 		if(userRoleRepository.findByRole("ADMIN") == null) {
-			userRoleRepository.save(new UserRole(1, "ADMIN"));
+			userRoleRepository.save(new UserRole("ADMIN"));
 		}
 		if(userRoleRepository.findByRole("USER") == null) {
-			userRoleRepository.save(new UserRole(2, "USER"));
+			userRoleRepository.save(new UserRole("USER"));
 		}
 	}
 	
@@ -83,4 +83,11 @@ public class UserServicesImpl implements UserServices {
 		return userRepository.findByCreatedAtAfter(startDate);
 	}
 
+	public List<User> findByUserNameLike(String name){
+		return userRepository.findByUserNameLike(name);
+	}
+	
+	public List<User> findByUserAgeOrderByUserNameDesc(Long age){
+		return userRepository.findByUserAgeOrderByUserNameDesc(age);
+	}
 }

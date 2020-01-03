@@ -24,4 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> findByUserAgeGreaterThanEqual(Long age);
 	public List<User> findByUserNameIsNotNull();
 	public List<User> findByCreatedAtAfter(Date startDate);
+	public List<User> findByUserNameLike(String name);
+	public List<User> findByUserAgeOrderByUserNameDesc(Long age);
+	
 }
