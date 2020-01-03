@@ -99,11 +99,13 @@ public class HomeController {
 	}
 	
 	@GetMapping("/userSearchBetween")
-	public String userSearchBetween(Long sage, Long eage, Model model) {
-		sage = (long) 10;
-		eage = (long) 30;
-		List<User> userList = userServices.findByUserAgeBetween(sage, eage);
-		model.addAttribute("userLIst", userList);
+	public String userSearchBetween(Model model) throws ParseException {
+		String startAt = "2019-12-10";
+		String endAt = "2019-12-20";
+		Date sAt = new SimpleDateFormat("yyyy-MM-dd").parse(startAt);
+		Date eAt = new SimpleDateFormat("yyyy-MM-dd").parse(endAt);
+		List<User> userList = userServices.findByCreatedAtBetween(sAt, eAt);
+		model.addAttribute("userList", userList);
 		return "/user/userList";
 	}
 	
@@ -116,11 +118,19 @@ public class HomeController {
 		return "/user/userList";
 	}
 	
-	/*
-	 * @GetMapping("/userSearchIsNull") public String userSearchIsNull(String name,
-	 * Model model) { name = null; List<User> userList =
-	 * userServices.findByUserNameIsNull(name); model.addAttribute("userList",
-	 * userList); return "/user/userList"; }
-	 */
-	
+	@GetMapping("/userSearchIsNotNull") 
+	public String userSearchIsNotNull(Model model) { 
+		List<User> userList =userServices.findByUserNameIsNotNull(); 
+		model.addAttribute("userList", userList); 
+		return "/user/userList"; 
+	}
+	 
+	@GetMapping("userSearchAfter")
+	public String userSearchAfter(Model model) throws ParseException {
+		String startAt = "2019-12-15";
+		Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse(startAt);
+		List<User> userList = userServices.findByCreatedAtAfter(startDate);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
 }

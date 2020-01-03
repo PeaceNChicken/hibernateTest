@@ -67,16 +67,20 @@ public class UserServicesImpl implements UserServices {
 		return userRepository.findByUserAddressIs(address);
 	}
 	
-	public List<User> findByUserAgeBetween(Long sage, Long eage){
-		return userRepository.findByUserAgeBetween(sage, eage);
+	public List<User> findByCreatedAtBetween(Date sAt, Date eAt){
+		return userRepository.findByCreatedAtBetween(sAt, eAt);
 	}
 	
 	public List<User> findByUserAgeGreaterThanEqual(Long age){
 		return userRepository.findByUserAgeGreaterThanEqual(age);
 	}
 	
-	/*
-	 * public List<User> findByUserNameIsNull(String name){ return
-	 * userRepository.findByUserNameIsNull(name); }
-	 */
+	public List<User> findByUserNameIsNotNull(){ 
+		return userRepository.findByUserNameIsNotNull(); 
+	}
+	
+	public List<User> findByCreatedAtAfter(Date startDate){
+		return userRepository.findByCreatedAtAfter(startDate);
+	}
+
 }

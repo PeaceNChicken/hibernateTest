@@ -20,7 +20,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> findByUserIdxAndUserName(Long idx, String name);
 	public List<User> findByUserGenderOrUserAddress(Character gender, String address);
 	public List<User> findByUserAddressIs(String address);
-	public List<User> findByUserAgeBetween(Long sage, Long eage);
+	public List<User> findByCreatedAtBetween(Date sAt, Date eAt);
 	public List<User> findByUserAgeGreaterThanEqual(Long age);
-	//public List<User> findByUserNameIsNull(String name);
+	public List<User> findByUserNameIsNotNull();
+	public List<User> findByCreatedAtAfter(Date startDate);
 }
