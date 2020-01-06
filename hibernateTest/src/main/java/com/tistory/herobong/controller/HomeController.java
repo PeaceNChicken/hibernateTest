@@ -184,13 +184,17 @@ public class HomeController {
 	@GetMapping("/userSearchCustom")
 	public String userSearchCustom(Model model) throws ParseException {
 		String name = "%수%";
+		String address = "서울";
 		String sDate = "2019-12-01";
 		String eDate = "2019-12-25";
 		Date sAt = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
 		Date eAt = new SimpleDateFormat("yyyy-MM-dd").parse(eDate);
 		//두 날짜 변수 사이에 해당하는 유저 리스트를 나이를 기준으로 오름차순으로 정렬하여 출력
 		//List<User> userList = userServices.findByCreatedAtBetweenOrderByUserAgeAsc(sAt, eAt);
-		List<User> userList = userServices.findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(sAt, eAt, name);
+		//두 날짜 변수 사이에 해당하는 유저 리스트 중에서 유저 이름에 '수'가 들어가는 결과를 나이를 기준으로 오름차순으로 정렬하여 출력
+		//List<User> userList = userServices.findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(sAt, eAt, name);
+		//두 날짜 변수 사이에 해당하는 유저 리스트 중에서 유저이름에 '수'가 들어가면서 유저 주소가 서울인 결과를 나이를 기준으로 오름차순으로 정렬하여 출력
+		List<User> userList = userServices.findByCreatedAtBetweenAndUserNameLikeAndUserAddressEqualsOrderByUserAgeAsc(sAt, eAt, name, address);
 		model.addAttribute("userList", userList);
 		return "/user/userList";
 	}

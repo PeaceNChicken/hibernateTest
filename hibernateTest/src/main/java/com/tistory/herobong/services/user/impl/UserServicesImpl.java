@@ -105,7 +105,14 @@ public class UserServicesImpl implements UserServices {
 	 * eAt); }
 	 */
 	
-	public List<User> findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(Date sAt, Date eAt, String name){
-		return userRepository.findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(sAt, eAt, name);
-	}
+	/*
+	 * public List<User> findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(Date
+	 * sAt, Date eAt, String name){ return
+	 * userRepository.findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(sAt,
+	 * eAt, name); }
+	 */
+	
+	public List<User> findByCreatedAtBetweenAndUserNameLikeAndUserAddressEqualsOrderByUserAgeAsc(Date sAt, Date eAt, String name, String address){
+		return userRepository.findByCreatedAtBetweenAndUserNameLikeAndUserAddressEqualsOrderByUserAgeAsc(sAt, eAt, name, address);
+	} 
 }

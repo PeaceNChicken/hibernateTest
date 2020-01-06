@@ -41,6 +41,7 @@ public interface UserServices {
 	
 	//public List<User> findByCreatedAtBetweenOrderByUserAgeAsc(Date sAt, Date eAt);
 	
-	public List<User> findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(Date sAt, Date eAt, String name);
+	//public List<User> findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(Date sAt, Date eAt, String name);
 
+	public List<User> findByCreatedAtBetweenAndUserNameLikeAndUserAddressEqualsOrderByUserAgeAsc(Date sAt, Date eAt, String name, String address);
 }
