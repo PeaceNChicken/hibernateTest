@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.tistory.herobong.models.user.User;
+import com.tistory.herobong.models.user.UserRole;
 
 public interface UserServices {
 
@@ -33,5 +34,9 @@ public interface UserServices {
 	public List<User> findByUserNameLike(String name);
 
 	public List<User> findByUserAgeOrderByUserNameDesc(Long age);
+	
+	public List<User> findByUserIdxIn(List<Long> idx);
+	
+	public List<User> findByUserRole(UserRole userRole);
 
 }

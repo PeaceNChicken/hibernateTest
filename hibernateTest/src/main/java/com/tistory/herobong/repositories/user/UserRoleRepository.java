@@ -11,4 +11,6 @@ public interface UserRoleRepository extends JpaRepository<UserRole, Long>{
 	//public UserRole save(UserRole userRole);
 	
 	public UserRole findByRole(String role);
+	
+	public UserRole findByUserRoleIdx(Long role);
 }

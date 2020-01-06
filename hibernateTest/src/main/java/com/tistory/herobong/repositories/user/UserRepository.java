@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.tistory.herobong.models.user.User;
+import com.tistory.herobong.models.user.UserRole;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -26,5 +27,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> findByCreatedAtAfter(Date startDate);
 	public List<User> findByUserNameLike(String name);
 	public List<User> findByUserAgeOrderByUserNameDesc(Long age);
+	public List<User> findByUserIdxIn(List<Long> idx);
+	public List<User> findByUserRole(UserRole userRole);
 	
 }

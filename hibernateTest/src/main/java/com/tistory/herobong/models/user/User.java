@@ -31,12 +31,9 @@ import lombok.ToString;
 public class User {
 
 	
-	
-	
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_idx", nullable = false)
+	@Id	// pk키 설정해주는 어노테이션
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	//auto_increment 어노테이션
+	@Column(name="user_idx", nullable = false)	//column 이름 설정, null 허용 여부
 	private long userIdx;
 	
 	@Column(name="user_name", nullable = false)
@@ -61,5 +58,8 @@ public class User {
 	@JoinColumn(name="user_role")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private UserRole userRole;
+	
+	//@Transient 테이블의 컬럼(=필드)에 추가하고 싶지 않은 속성이 있을때 사용하는 어노테이션
+	//예) 비밀번호가 제대로 입력했는지 확인차 한 번 더 입력하게 하는 부분
 	
 }

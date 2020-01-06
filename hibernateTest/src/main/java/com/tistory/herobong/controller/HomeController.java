@@ -2,6 +2,7 @@ package com.tistory.herobong.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tistory.herobong.models.user.User;
+import com.tistory.herobong.models.user.UserRole;
+import com.tistory.herobong.services.user.UserRoleServices;
 import com.tistory.herobong.services.user.UserServices;
 
 @Controller
@@ -21,6 +24,9 @@ public class HomeController {
 
 	@Resource(name="UserServices")
 	UserServices userServices;
+	
+	@Resource(name="UserRoleServices")
+	UserRoleServices userRoleServices;
 	
 	@GetMapping("/")
 	public String index() {
@@ -153,5 +159,26 @@ public class HomeController {
 		return "/user/userList";
 	}
 	
+	@GetMapping("/userSearchIn")
+	public String userSearchIn(Model model) {
+		List<Long> idx = new ArrayList();
+		//List<String> address = new ArrayList();
+		idx.add((long)1);
+		idx.add((long)2);
+		idx.add((long)3);
+		List<User> userList = userServices.findByUserIdxIn(idx);
+		//System.out.println(userList);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
+	
+	@GetMapping("/userSearchRole")
+	public String userSearchRole(Model model) {
+		Long role = (long)1;
+		UserRole userRole = userRoleServices.findByUserRoleIdx(role);
+		List<User> userList = userServices.findByUserRole(userRole);
+		model.addAttribute("userList", userList);
+		return "/user/userList";
+	}
 	
 }
