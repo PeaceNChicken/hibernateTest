@@ -98,4 +98,14 @@ public class UserServicesImpl implements UserServices {
 	public List<User> findByUserRole(UserRole userRole){
 		return userRepository.findByUserRole(userRole);
 	}
+	
+	/*
+	 * public List<User> findByCreatedAtBetweenOrderByUserAgeAsc(Date sAt, Date
+	 * eAt){ return userRepository.findByCreatedAtBetweenOrderByUserAgeAsc(sAt,
+	 * eAt); }
+	 */
+	
+	public List<User> findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(Date sAt, Date eAt, String name){
+		return userRepository.findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(sAt, eAt, name);
+	}
 }

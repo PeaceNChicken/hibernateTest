@@ -38,5 +38,9 @@ public interface UserServices {
 	public List<User> findByUserIdxIn(List<Long> idx);
 	
 	public List<User> findByUserRole(UserRole userRole);
+	
+	//public List<User> findByCreatedAtBetweenOrderByUserAgeAsc(Date sAt, Date eAt);
+	
+	public List<User> findByCreatedAtBetweenAndUserNameLikeOrderByUserAgeAsc(Date sAt, Date eAt, String name);
 
 }
